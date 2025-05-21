@@ -14,7 +14,9 @@ app.get("/", (req, res) => {
   res.send("hello from backend");
 });
 
-app.use("/api/message", chatRoutes);
+app.use(express.json());
+app.use("/api/chats", chatRoutes);
+
 app.listen(process.env.PORT, () => {
   console.log(`server is running on the port ${PORT}`);
   connectDB();
