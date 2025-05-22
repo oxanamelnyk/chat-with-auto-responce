@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useChatStore } from "../store/useChatStore";
 import styles from "./Sidebar.module.css";
 import Header from "./Header";
+import SidebarTopBar from "./ SidebarTopBar";
 
 export default function Sidebar() {
   const { chats, getChats, setSelectedChat } = useChatStore();
@@ -15,7 +16,7 @@ export default function Sidebar() {
 
   return (
     <aside className={styles.wrapper}>
-      <Header />
+      <SidebarTopBar />
       <h2 className={styles.title}>Chats</h2>
       <ul>
         {chats.map((chat) => (
