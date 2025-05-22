@@ -1,0 +1,74 @@
+.chatItem {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--gray-border);
+  cursor: pointer;
+  position: relative;
+}
+
+.chatInner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px 0;
+}
+
+.name {
+  font-size: 16px;
+  color: var(--black);
+}
+
+.message {
+  line-height: 1.25;
+}
+
+.buttonGroup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 6px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+  border: 1px solid var(--gray-border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  color: #333;
+}
+
+.button:hover {
+  background-color: var(--blue);
+  border-color: var(--blue);
+  color: var(--white);
+}
+
+.editGroup {
+  display: flex;
+  gap: 4px;
+}
+
+.editGroup input {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid var(--gray-border);
+  border-radius: 8px;
+  background-color: var(--white);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+  width: auto;
+  min-width: 80px;
+  max-width: 150px;
+}
+
+.editGroup input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2); /* light blue focus ring */
+}

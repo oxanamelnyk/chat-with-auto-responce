@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { axiosInstance } from "@/lib/axios";
-import styles from "./NewChatModal.module.css";
 import { Cross1Icon } from "@radix-ui/react-icons";
 import Button from "@/components/UI/Button/Button";
+import styles from "./NewChatModal.module.css";
 
 export default function NewChatModal({ onClose, defaultName = "" }) {
   const [firstName, setFirstName] = useState(defaultName.split(" ")[0] || "");
@@ -23,7 +23,7 @@ export default function NewChatModal({ onClose, defaultName = "" }) {
         <button onClick={onClose} className={styles.closeModalBtn}>
           <Cross1Icon />
         </button>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.form}>
           <input
             placeholder="First name"
             value={firstName}

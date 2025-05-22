@@ -41,14 +41,14 @@
   background-color: var(--black);
 }
 
-form {
+.form {
   padding: 10px 30px;
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-input {
+.form input {
   padding: 8px 8px 8px 22px;
   background-color: var(--gray-25);
   border: 1px solid var(--gray-border);

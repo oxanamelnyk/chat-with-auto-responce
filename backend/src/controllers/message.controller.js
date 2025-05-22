@@ -16,20 +16,21 @@ export const createMessage = async (req, res) => {
     const { chatId, content, senderType } = req.body;
 
     const newMessage = await Message.create({ chatId, content, senderType });
-
     res.status(201).json(newMessage);
 
     if (senderType === "user") {
       setTimeout(async () => {
         try {
-          const { data } = await axios.get("https://api.quotable.io/random");
+          const { data } = await axios.get("https://zenquotes.io/api/random");
+          const quote = data[0];
+
           await Message.create({
             chatId,
-            content: `💬 ${data.content} — ${data.author}`,
+            content: quote.q,
             senderType: "bot",
           });
-        } catch (error) {
-          console.error("Failed to fetch quote:", error.message);
+        } catch (err) {
+          console.error("Failed to fetch quote:", err.message);
         }
       }, 3000);
     }

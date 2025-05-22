@@ -1,7 +1,7 @@
 import { useChatStore } from "@/store/useChatStore";
 import NoChatSelected from "@/components/Chat/NoChatSelected/NoChatSelected";
 import ChatContainer from "@/components/Chat/ChatContainer/ChatContainer";
-import Sidebar from "@/components/Sidebar/Sidebar";
+import Sidebar from "@/components/Sidebar/Sidebar/Sidebar";
 import styles from "./HomePage.module.css";
 
 export default function HomePage() {

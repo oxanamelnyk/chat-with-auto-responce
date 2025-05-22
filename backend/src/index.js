@@ -16,7 +16,6 @@ app.get("/", (req, res) => {
 app.use(express.json());
 app.use("/api/chats", chatRoutes);
 app.use("/api/messages", messageRoutes);
-
 app.listen(process.env.PORT, () => {
   console.log(`server is running on the port ${PORT}`);
   connectDB();

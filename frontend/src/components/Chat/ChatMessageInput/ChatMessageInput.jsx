@@ -21,6 +21,8 @@ export default function ChatInput() {
 
       setText("");
       await getMessages(selectedChat._id);
+
+      setTimeout(() => getMessages(selectedChat._id), 3100);
     } catch (err) {
       console.error("Send failed:", err);
     }
