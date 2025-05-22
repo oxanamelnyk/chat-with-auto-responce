@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useChatStore } from "@/store/useChatStore";
 import SidebarTopBar from "@/components/Sidebar/SidebarTopBar/SidebarTopBar";
 import ChatListItem from "./SidebarChatItem/SidebarChatItem";
-import styles from "@/components/Sidebar/Sidebar.module.css";
+import styles from "./Sidebar.module.css";
 
 export default function Sidebar() {
   const { chats, getChats, setSelectedChat } = useChatStore();
@@ -12,7 +12,7 @@ export default function Sidebar() {
   };
   useEffect(() => {
     getChats();
-  }, [getChats]);
+  }, [getChats, setSelectedChat]);
 
   return (
     <aside className={styles.wrapper}>

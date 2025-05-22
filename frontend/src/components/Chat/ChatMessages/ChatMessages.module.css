@@ -1,10 +1,14 @@
-.container {
+.wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   padding: 16px;
+  overflow-y: auto;
 }
+
 .messageList {
-  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  height: 100%;
+  margin-top: 12px;
 }

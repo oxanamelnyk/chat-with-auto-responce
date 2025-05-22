@@ -9,18 +9,9 @@ export default function ChatMessage({ message }) {
   return (
     <li
       className={`${styles.messageItem} ${isUser ? styles.user : styles.bot}`}>
-      {!isUser && (
-        // <img
-        //   className={styles.avatar}
-        //   src={`https://ui-avatars.com/api/?name=Bot&rounded=true&size=36`}
-        //   alt="Bot"
-        // />
-        <Avatar />
-      )}
-      <div className={styles.bubble}>
-        <p className={styles.content}>{message.content}</p>
-        <span className={styles.time}>{time}</span>
-      </div>
+      {!isUser && <Avatar firstName="Bot" size={36} />}
+      <div className={styles.bubble}>{message.content}</div>
+      <span className={styles.time}>{time}</span>
     </li>
   );
 }

@@ -1,11 +1,13 @@
+import { forwardRef } from "react";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import styles from "./SearchInput.module.css";
 
-export default function SearchInput({ value, onChange, placeholder }) {
+function SearchInput({ value, onChange, placeholder }, ref) {
   return (
     <div className={styles.searchBox}>
       <MagnifyingGlassIcon className={styles.icon} />
       <input
+        ref={ref}
         type="text"
         className={styles.input}
         placeholder={placeholder}
@@ -15,3 +17,5 @@ export default function SearchInput({ value, onChange, placeholder }) {
     </div>
   );
 }
+
+export default forwardRef(SearchInput);
