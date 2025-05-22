@@ -1,0 +1,20 @@
+.searchBox {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 8px 8px 8px 32px;
+  background-color: var(--gray-25);
+  border: 1px solid var(--gray-border);
+  border-radius: 50px;
+  font-size: inherit;
+  outline: none;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+}

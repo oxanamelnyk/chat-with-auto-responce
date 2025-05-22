@@ -1,17 +1,12 @@
-import styles from "./ChatHeader.module.css";
+import Avatar from "@/components/UI/Avatar/Avatar";
+import styles from "@/components/Chat/ChatHeader/ChatHeader.module.css";
 
 export default function ChatHeader({ chat }) {
   if (!chat) return null;
-
   const fullName = `${chat.firstName} ${chat.lastName}`;
-
   return (
     <div className={styles.header}>
-      <img
-        src={`https://ui-avatars.com/api/?name=${chat.firstName}+${chat.lastName}&rounded=true&size=36`}
-        alt={fullName}
-        className={styles.avatar}
-      />
+      <Avatar firstName={chat.firstName} lastName={chat.lastName} />{" "}
       <span className={styles.name}>{fullName}</span>
     </div>
   );

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useChatStore } from "../store/useChatStore";
-import { axiosInstance } from "../lib/axios";
+import { useChatStore } from "@/store/useChatStore";
+import { axiosInstance } from "@/lib/axios";
 import { PaperPlaneIcon } from "@radix-ui/react-icons";
-import styles from "./ChatMessageInput.module.css";
+import styles from "@/components/Chat/ChatMessageInput/ChatMessageInput.module.css";
 
 export default function ChatInput() {
   const [text, setText] = useState("");
