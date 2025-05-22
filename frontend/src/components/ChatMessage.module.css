@@ -1,0 +1,53 @@
+.messageItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 8px 0;
+  max-width: 70%;
+}
+
+.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.bot {
+  align-self: flex-start;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.bubble {
+  background-color: #f3f4f6;
+  padding: 8px 12px;
+  border-radius: 16px;
+  position: relative;
+}
+
+.user .bubble {
+  background-color: #e5e7eb;
+  border-radius: 16px 16px 0 16px;
+}
+
+.bot .bubble {
+  background-color: #475569;
+  color: #fff;
+  border-radius: 16px 16px 16px 0;
+}
+
+.content {
+  margin: 0;
+  font-size: 14px;
+}
+
+.time {
+  display: block;
+  font-size: 11px;
+  color: #999;
+  margin-top: 4px;
+}

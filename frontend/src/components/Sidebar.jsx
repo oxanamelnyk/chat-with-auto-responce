@@ -6,6 +6,9 @@ import Header from "./Header";
 export default function Sidebar() {
   const { chats, getChats, setSelectedChat } = useChatStore();
 
+  const handleChat = (chat) => {
+    setSelectedChat(chat);
+  };
   useEffect(() => {
     getChats();
   }, [getChats]);
@@ -19,7 +22,7 @@ export default function Sidebar() {
           <li
             className={styles.chatItem}
             key={chat._id}
-            onClick={() => setSelectedChat(chat)}>
+            onClick={() => handleChat(chat)}>
             <div className={styles.chatInner}>
               <img
                 src={`https://ui-avatars.com/api/?name=${chat.firstName}+${chat.lastName}&rounded=true&size=50`}
