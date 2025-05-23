@@ -13,7 +13,6 @@ export const useChatStore = create((set) => ({
     set({ isChatsLoading: true });
     try {
       const res = await axiosInstance.get("/chats");
-      console.log(res.data);
 
       set({ chats: res.data });
     } catch (error) {
