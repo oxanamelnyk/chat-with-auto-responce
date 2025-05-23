@@ -5,6 +5,8 @@ import styles from "./SidebarTopBar.module.css";
 import { useRef, useState } from "react";
 import { useChatStore } from "@/store/useChatStore";
 import NewChatModal from "../NewChatModal/NewChatModal";
+import { signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "@/lib/firebase";
 
 export default function SidebarTopBar({ search, setSearch }) {
   const [showModal, setShowModal] = useState(false);
@@ -32,7 +34,19 @@ export default function SidebarTopBar({ search, setSearch }) {
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <Avatar firstName="User" lastName="" />
-        <Button className={styles.login}>Log in</Button>
+        <Button
+          className={styles.login}
+          onClick={async () => {
+            try {
+              const result = await signInWithPopup(auth, googleProvider);
+              const user = result.user;
+              console.log("Logged in as:", user.displayName);
+            } catch (err) {
+              console.error("Login failed:", err);
+            }
+          }}>
+          Log in
+        </Button>{" "}
       </div>
 
       <SearchInput
