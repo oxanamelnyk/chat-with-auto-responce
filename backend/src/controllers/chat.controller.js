@@ -2,10 +2,30 @@ import Chat from "../models/chat.model.js";
 
 export const getChats = async (req, res) => {
   try {
-    const chats = await Chat.find();
+    const chats = await Chat.aggregate([
+      {
+        $lookup: {
+          from: "messages",
+          let: { chatId: "$_id" },
+          pipeline: [
+            { $match: { $expr: { $eq: ["$chatId", "$$chatId"] } } },
+            { $sort: { createdAt: -1 } },
+            { $limit: 1 },
+            { $project: { content: 1, _id: 0 } },
+          ],
+          as: "lastMessage",
+        },
+      },
+      {
+        $addFields: {
+          lastMessage: { $arrayElemAt: ["$lastMessage.content", 0] },
+        },
+      },
+    ]);
+
     res.status(200).json(chats);
   } catch (error) {
-    console.log(("Error in getChats:", error.message));
+    console.error("Error in getChats:", error.message);
     res.status(500).json({ error: "Failed to fetch chats" });
   }
 };

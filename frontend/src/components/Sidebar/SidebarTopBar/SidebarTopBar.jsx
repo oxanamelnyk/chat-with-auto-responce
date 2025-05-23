@@ -1,12 +1,12 @@
+import { useRef, useState } from "react";
+import { useChatStore } from "@/store/useChatStore";
+import { signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "@/lib/firebase";
 import Avatar from "@/components/UI/Avatar/Avatar";
 import Button from "@/components/UI/Button/Button";
 import SearchInput from "@/components/UI/SearchInput/SearchInput";
 import styles from "./SidebarTopBar.module.css";
-import { useRef, useState } from "react";
-import { useChatStore } from "@/store/useChatStore";
 import NewChatModal from "../NewChatModal/NewChatModal";
-import { signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "@/lib/firebase";
 
 export default function SidebarTopBar({ search, setSearch }) {
   const [showModal, setShowModal] = useState(false);

@@ -4,9 +4,10 @@ import { axiosInstance } from "@/lib/axios";
 import SidebarTopBar from "@/components/Sidebar/SidebarTopBar/SidebarTopBar";
 import ChatListItem from "../ChatListItem/ChatListItem";
 import styles from "./Sidebar.module.css";
+import Spinner from "@/components/UI/Spinner/Spinner";
 
 export default function Sidebar() {
-  const { chats, getChats, setSelectedChat } = useChatStore();
+  const { chats, getChats, setSelectedChat, isChatsLoading } = useChatStore();
   const [search, setSearch] = useState("");
 
   const filteredChats = chats.filter((chat) =>
@@ -36,17 +37,22 @@ export default function Sidebar() {
     <aside className={styles.wrapper}>
       <SidebarTopBar search={search} setSearch={setSearch} />
       <h2 className={styles.title}>Chats</h2>
-      <ul>
-        {filteredChats.map((chat) => (
-          <ChatListItem
-            key={chat._id}
-            chat={chat}
-            onClick={handleChat}
-            onUpdate={handleUpdateChat}
-            onDelete={handleDeleteChat}
-          />
-        ))}
-      </ul>
+
+      {isChatsLoading ? (
+        <Spinner />
+      ) : (
+        <ul className={styles.listItems}>
+          {filteredChats.map((chat) => (
+            <ChatListItem
+              key={chat._id}
+              chat={chat}
+              onClick={handleChat}
+              onUpdate={handleUpdateChat}
+              onDelete={handleDeleteChat}
+            />
+          ))}
+        </ul>
+      )}
     </aside>
   );
 }

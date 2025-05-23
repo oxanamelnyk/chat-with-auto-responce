@@ -1,9 +1,9 @@
+import { connectDB } from "./lib/db.js";
 import express from "express";
 import dotenv from "dotenv";
-import { connectDB } from "./lib/db.js";
+import cors from "cors";
 import chatRoutes from "./routes/chat.routes.js";
 import messageRoutes from "./routes/message.routes.js";
-// import path from "path";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 
@@ -15,6 +15,14 @@ const PORT = process.env.PORT || 5001;
 // const __dirname = path.resolve();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+//CORS
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 
 // Middleware
 app.use(express.json());

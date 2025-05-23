@@ -6,8 +6,11 @@ import styles from "@/components/Chat/ChatMessages/ChatMessages.module.css";
 
 export default function ChatMessages() {
   const { messages, getMessages, selectedChat } = useChatStore();
-  const prevBotMsgCount = useRef(0);
 
+  // Track the ID of the last seen bot message
+  const lastSeenBotMessageId = useRef(null);
+
+  // Fetch messages when a chat is selected, and keep polling every 3 seconds
   useEffect(() => {
     if (!selectedChat?._id) return;
 
@@ -19,18 +22,24 @@ export default function ChatMessages() {
     return () => clearInterval(interval);
   }, [selectedChat, getMessages]);
 
+  // Show toast only when a *new* bot message appears
   useEffect(() => {
-    const botMessages = messages.filter((m) => m.senderType === "bot");
+    const lastMessage = messages[messages.length - 1];
 
-    if (botMessages.length > prevBotMsgCount.current) {
+    if (
+      lastMessage &&
+      lastMessage.senderType === "bot" &&
+      lastMessage._id !== lastSeenBotMessageId.current
+    ) {
       const fullName = `${selectedChat?.firstName ?? ""} ${
         selectedChat?.lastName ?? ""
       }`.trim();
 
       toast(`New message in ${fullName}`);
-      prevBotMsgCount.current = botMessages.length;
+      lastSeenBotMessageId.current = lastMessage._id;
     }
   }, [messages, selectedChat]);
+
   return (
     <div className={styles.wrapper}>
       <ul className={styles.messageList}>

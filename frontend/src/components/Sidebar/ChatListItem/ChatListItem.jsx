@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 import Avatar from "@/components/UI/Avatar/Avatar";
 import styles from "./ChatListItem.module.css";
-import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 
 export default function ChatListItem({ chat, onClick, onUpdate, onDelete }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -21,7 +21,7 @@ export default function ChatListItem({ chat, onClick, onUpdate, onDelete }) {
     }
   };
   return (
-    <li className={styles.chatItem}>
+    <li className={styles.chatItem} onClick={() => onClick(chat)}>
       <div className={styles.chatInner}>
         <Avatar firstName={firstName} lastName={lastName} />
         <div className={styles.actions}>
@@ -50,7 +50,7 @@ export default function ChatListItem({ chat, onClick, onUpdate, onDelete }) {
             </button>
           </div>
         </div>
-        <div onClick={() => onClick(chat)}>
+        <div>
           {isEditing ? (
             <div className={styles.editGroup}>
               <input
@@ -68,12 +68,14 @@ export default function ChatListItem({ chat, onClick, onUpdate, onDelete }) {
               />
             </div>
           ) : (
-            <>
+            <div className={styles.content}>
               <h5 className={styles.name}>
                 {firstName} {lastName}
               </h5>
-              <p className={styles.message}>Lorem ipsum dolor sit.</p>
-            </>
+              <p className={styles.message}>
+                {chat.lastMessage || "No messages yet."}
+              </p>
+            </div>
           )}
         </div>
       </div>
