@@ -25,11 +25,11 @@ app.use("/api/messages", messageRoutes);
 
 // Serve frontend in production
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(join(__dirname, "../frontend/dist")));
+  app.use(express.static(join(__dirname, "../../frontend/dist")));
 
   // Use regular expression instead of '*' (for Express v5)
   app.get(/(.*)/, (req, res) => {
-    res.sendFile(join(__dirname, "../frontend/dist/index.html"));
+    res.sendFile(join(__dirname, "../../frontend/dist/index.html"));
   });
 } else {
   // Development-only route
