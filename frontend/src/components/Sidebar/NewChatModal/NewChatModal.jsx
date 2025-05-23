@@ -3,16 +3,19 @@ import { axiosInstance } from "@/lib/axios";
 import { Cross1Icon } from "@radix-ui/react-icons";
 import Button from "@/components/UI/Button/Button";
 import styles from "./NewChatModal.module.css";
+import { useChatStore } from "@/store/useChatStore";
 
 export default function NewChatModal({ onClose, defaultName = "" }) {
   const [firstName, setFirstName] = useState(defaultName.split(" ")[0] || "");
   const [lastName, setLastName] = useState(defaultName.split(" ")[1] || "");
+  const { getChats } = useChatStore();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!firstName || !lastName) return;
 
     await axiosInstance.post("/chats", { firstName, lastName });
+    await getChats();
     onClose();
   };
 
