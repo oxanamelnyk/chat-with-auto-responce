@@ -10,3 +10,9 @@
   align-items: center;
   margin-bottom: 14px;
 }
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
